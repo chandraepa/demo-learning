@@ -26,7 +26,7 @@
             }
             catch (Exception ex)
             {
-                fileLogger.Error("Error Occurred while Generating Invoice", ex.Message);
+                fileLogger.Error("Error Occurred while Generating Invoice", ex);
             }
         }
         public void DeleteInvoice()

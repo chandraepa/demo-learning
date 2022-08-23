@@ -20,8 +20,13 @@ namespace DemoLearning.Controllers.Linq
         int[] vectorB = { 9, 8, 7, 6 };
 
         [HttpGet]
+        [Route("GetEmployee")]
         public List<Employee> GetEmployee()
         {
+            int[] arr = { 7, 2, 4, 2, 5, 6, 7, 8, 9, 10 };
+
+            FindSubArray(arr, 15);
+
             List<Employee> employees = new List<Employee>() { new Employee { Name = "Emp1", EmployeeId = 1 } };
             employees.Add(new Employee { Name = "Emp2", EmployeeId = 2 });
             employees.AddRange(new List<Employee> {
@@ -64,6 +69,25 @@ namespace DemoLearning.Controllers.Linq
             }
 
             return employees;
+        }
+
+        [HttpGet]
+        [Route("FindSubArray")]
+        public int[] FindSubArray(int[] arr, int sum)
+        {
+            int[] subArray = new int[500];
+            int sumArray = 0;
+
+            for (var i = 0; i < arr.Length; i++)
+            {
+                subArray[i] = arr[i];
+                sumArray += arr[i];
+                if (sumArray == sum)
+                {
+                    return subArray; ;
+                }
+            }
+            return arr;
         }
     }
 }
